@@ -1,0 +1,1 @@
+export const POST_FILM = 'POST_FILM';
