@@ -5,7 +5,6 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import useAction from '../../hooks/useAction';
 import { POST_FILM } from '../../models/filmlist/action';
-import { Route } from 'react-router-dom';
 
 
 const Home = () => {

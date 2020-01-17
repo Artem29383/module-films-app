@@ -1,4 +1,8 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import {
+  applyMiddleware,
+  combineReducers,
+  createStore
+} from 'redux';
 import filmsReducer from '../models/filmlist/reducer';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from '../api/sagas';
