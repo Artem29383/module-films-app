@@ -15,6 +15,12 @@ class Api {
   postCreateFilms = (id, film) => {
     return this.instance.post(`filmsList`, film);
   };
+  
+  deleteFilm = (id) => {
+    return this.instance.delete(`filmsList/${id}`);
+  };
+  
+  
 }
 
 const API = new Api();

@@ -1,6 +1,7 @@
 import HomePage from './pages/HomePage';
 
 export default [{
-  path: '/',
+  exact: true,
+  path: ['/', '/?search=?str', '/films/:id'],
   component: HomePage
 }]

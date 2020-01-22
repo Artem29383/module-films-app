@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import {
   Redirect,
-  Route,
+  Route, Switch,
 } from 'react-router-dom';
 import classes from './App.module.scss';
 import useSelector from './hooks/useSelector';
@@ -19,9 +19,10 @@ const App = () => {
   }, [getFilms]);
   
   
-  const routs = routes.map(({ path, component: Component }) => {
+  const routs = routes.map(({ exact, path, component: Component }) => {
       return (
         <Route
+          exact = {exact}
           key={path}
           path={path}
           render={props => <Component {...props} />}
@@ -34,10 +35,12 @@ const App = () => {
   return (
     <Fragment>
       {isInit &&
-      <div className={classes.content}>
-        {routs}
-        <Redirect to='/' />
-      </div>
+        <div className={classes.content}>
+          <Switch>
+          {routs}
+          <Redirect to='/' />
+      </Switch>
+        </div>
       }
     </Fragment>
   );
