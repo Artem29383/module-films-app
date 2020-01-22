@@ -5,7 +5,9 @@ import {
 } from 'redux';
 import filmsReducer from '../models/filmlist/reducer';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from '../api/sagas';
+import rootSaga from '../sagas/sagas';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 
 const saga = createSagaMiddleware();
 
@@ -15,7 +17,8 @@ const reducer = combineReducers(
   }
 );
 
-const store = createStore(reducer, applyMiddleware(saga));
+
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(saga)));
 saga.run(rootSaga);
 
 export default store;
