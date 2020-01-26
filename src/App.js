@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
 import {
   Redirect,
-  Route, Switch,
+  Route,
+  Switch,
 } from 'react-router-dom';
 import classes from './App.module.scss';
 import useSelector from './hooks/useSelector';

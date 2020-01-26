@@ -55,7 +55,8 @@ const AddFilm = () => {
       const id = Date.now();
       postFilm({
         id, payload: {
-          id, name, genre, date, country, fields: [
+          id, name, genre, date, country,
+          fields: [
             'Название', 'Жанр', 'Дата выхода', 'Страна'
           ]
         }
