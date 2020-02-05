@@ -36,7 +36,7 @@
     position: absolute;
     height: 2px;
     content: '';
-    transform: rotateY(80deg) scale(0);
+    transform: rotateY(90deg);
     transition: transform .2s linear;
     background-color: #ea5a5a;
     width: 100%;
@@ -48,8 +48,7 @@
 .frameInput:focus ~ .bar::after, .input,
 .frameInput:not(:placeholder-shown) ~ .bar::after,
 .input, .frameInput:not(:placeholder-shown) ~ .bar::after {
-  transform: rotateY(0deg) scale(1);
-  width: 100%;
+  transform: rotateY(0deg);
 }
 
 .error {
