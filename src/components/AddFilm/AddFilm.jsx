@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classes from './AddFilm.module.scss';
 import classnames from 'classnames';
 import Input from '../Input/Input';
@@ -10,6 +10,7 @@ import {
   POST_FILM,
   POST_FILM_SUCCESS
 } from '../../models/filmlist/action';
+import { Collapse } from 'react-collapse';
 
 
 const AddFilm = () => {
@@ -78,43 +79,53 @@ const AddFilm = () => {
       setTimeout(() => setIsDone(false), 2000);
     }
   }, [isError, isDone, setIsDone]);
-
+  
+  const theme = {
+    collapse: `${classes.reactCollapse}`,
+    content: `${classnames(
+      classes.createdFilmFrame,
+      isShow && classes.show)}`
+  };
+  
+ 
   return (
-    <div
-      className={classnames(
-        classes.createdFilmFrame,
-        isShow && classes.show)
-      }>
-      <div className={classes.frameContent}>
-        <div className={classes.title}>
-          <div className={classes.titleText}>
-            Добавить фильм
-          </div>
+    <Collapse isOpened={isShow || !isShow} theme={theme}>
+      <div className={classes.title}>
+        <div className={classes.titleText}>
+          Добавить фильм
         </div>
-        <div className={classes.frameFields}>
-          <Input isError={isError} value={name} handler={nameHandler} desc='Название' />
-          <Input isError={isError} value={genre} handler={genreHandler} desc='Жанр' />
-          <Input isError={isError} value={date} handler={dateHandler} desc='Дата выхода' />
-          <Input isError={isError} value={country} handler={countryHandler} desc='Страна выпуска' />
-          {isDone &&
-          <div className={classnames(
-            classes.error,
-            classes.green
-          )}>
-            Фильм добавлен.
-          </div>}
-        </div>
-        <Button text='Добавить фильм' fn={sumbitHandler} />
-        <span
-          className={classnames(
-            classes.close,
-            isShow && classes.active)
-          }
-          onClick={showHandler}>
-            ✖
-          </span>
       </div>
-    </div>
+      <div className={classes.frameFields}>
+        <div className={classes.field}>
+          <Input isError={isError} value={name} handler={nameHandler} desc='Название' />
+        </div>
+        <div className={classes.field}>
+          <Input isError={isError} value={genre} handler={genreHandler} desc='Жанр' />
+        </div>
+        <div className={classes.field}>
+          <Input isError={isError} value={date} handler={dateHandler} desc='Дата выхода' />
+        </div>
+        <div className={classes.field}>
+          <Input isError={isError} value={country} handler={countryHandler} desc='Страна выпуска' />
+        </div>
+        {isDone &&
+        <div className={classnames(
+          classes.error,
+          classes.green
+        )}>
+          Фильм добавлен.
+        </div>}
+      </div>
+      <div className={classes.btn}>
+      <Button changeHandler={sumbitHandler}>Добавить фильм</Button>
+      </div>
+      <div
+        className={classnames(
+          classes.close,
+          isShow && classes.active)
+        }
+        onClick={showHandler} />
+    </Collapse>
   )
 };
 
