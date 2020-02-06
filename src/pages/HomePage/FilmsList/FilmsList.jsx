@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Input from '../../../components/Input/Input';
 import {
   NavLink,
   useHistory
 } from 'react-router-dom';
+import Input from '../../../components/Input/Input';
 import classes from './FilmsList.module.scss';
 import useSelector from '../../../hooks/useSelector';
 import {
