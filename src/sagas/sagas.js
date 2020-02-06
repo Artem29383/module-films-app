@@ -5,11 +5,13 @@ import {
   put
 } from 'redux-saga/effects'
 import {
-  ADD_FILM, DELETE_FILM,
+  ADD_FILM,
+  DELETE_FILM,
   GET_FILMS,
   POST_FILM,
   POST_FILM_SUCCESS,
-  PUT_FILMS, REMOVE_FILM,
+  PUT_FILMS,
+  REMOVE_FILM,
   SET_INIT
 } from '../models/filmlist/action';
 import {
