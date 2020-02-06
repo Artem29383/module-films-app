@@ -30,24 +30,22 @@
 }
 
 .bar {
-  position: relative;
-  display: block;
-  &::after {
-    position: absolute;
-    height: 2px;
-    content: '';
-    transform: rotateY(90deg);
-    transition: transform .2s linear;
-    background-color: #ea5a5a;
-    width: 100%;
-  }
+  position: absolute;
+  height: 3px;
+  content: '';
+  transform: rotateY(90deg);
+  transition: transform .2s linear;
+  background-color: #ea5a5a;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }
 
 
-.frameInput:focus ~ .bar::after,
-.frameInput:focus ~ .bar::after, .input,
-.frameInput:not(:placeholder-shown) ~ .bar::after,
-.input, .frameInput:not(:placeholder-shown) ~ .bar::after {
+.frameInput:focus ~ .bar,
+.frameInput:focus ~ .bar, .input,
+.frameInput:not(:placeholder-shown) ~ .bar,
+.input, .frameInput:not(:placeholder-shown) ~ .bar {
   transform: rotateY(0deg);
 }
 

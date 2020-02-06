@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './HomePage.module.scss';
-import AddFilm from '../../components/AddFilm';
-import FilmsList from '../../components/FilmsList';
+import AddFilm from './AddFilm';
+import FilmsList from './FilmsList';
 
 
 const HomePage = () => {

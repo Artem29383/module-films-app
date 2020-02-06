@@ -14,7 +14,7 @@ const Input = ({
       placeholder=' '
       className={classes.frameInput}
       type="text" />
-    <span className={classes.bar} />
+    <div className={classes.bar} />
     <label className={classes.label}>{desc}</label>
     {(isError && !value)
     && <div className={classes.error}>

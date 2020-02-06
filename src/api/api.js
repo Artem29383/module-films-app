@@ -12,7 +12,7 @@ class Api {
     return this.instance.get('filmsList');
   };
   
-  postCreateFilms = (id, film) => {
+  postCreateFilms = (film) => {
     return this.instance.post(`filmsList`, film);
   };
   

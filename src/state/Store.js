@@ -3,10 +3,10 @@ import {
   combineReducers,
   createStore
 } from 'redux';
-import filmsReducer from '../models/filmlist/reducer';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from '../sagas/sagas';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import filmsReducer from '../models/filmlist/reducer';
+import rootSaga from '../models/filmlist/sagas';
 
 
 const saga = createSagaMiddleware();
