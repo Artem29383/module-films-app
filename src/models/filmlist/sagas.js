@@ -42,7 +42,6 @@ function* postFilm(action) {
 function* getFilms() {
   try {
     const payload = yield call(API.getFilms);
-    console.log(payload.data);
     const filmsSchema = new schema.Entity('filmsList');
     const filmsListSchema = [filmsSchema];
     const dataNormalized = normalize(payload.data, filmsListSchema);
