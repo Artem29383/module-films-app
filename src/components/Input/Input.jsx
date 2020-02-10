@@ -1,26 +1,38 @@
 import React from 'react';
-import classes from './Input.module.scss';
+import {
+  Bar,
+  Error,
+  Group,
+  InputField,
+  Label
+} from './styles';
 
 const Input = ({
   value,
   handler,
+  blur,
+  keyDown,
   desc,
-  isError
+  isError,
+  focus = false
 }) => (
-  <div className={classes.group}>
-    <input
+  <Group>
+    <InputField
       value={value}
       onChange={handler}
+      onBlur = {blur}
+      onKeyDown = {keyDown}
       placeholder=' '
-      className={classes.frameInput}
-      type="text" />
-    <div className={classes.bar} />
-    <label className={classes.label}>{desc}</label>
+      type="text"
+      autoFocus = {focus}
+    />
+    <Bar />
+    <Label>{desc}</Label>
     {(isError && !value)
-    && <div className={classes.error}>
+    && <Error>
       Заполните поле.
-    </div>}
-  </div>
+    </Error>}
+  </Group>
 );
 
 export default Input;

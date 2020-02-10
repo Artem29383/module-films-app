@@ -28,9 +28,9 @@
     },
     {
       "id": 1579907935684,
-      "name": "Add Film",
-      "genre": "dsa",
-      "date": "2",
+      "name": "Add Films",
+      "genre": "XXX",
+      "date": "2dsads",
       "country": "4",
       "fields": [
         "Название",
@@ -41,8 +41,8 @@
     },
     {
       "id": 1579907948523,
-      "name": "D",
-      "genre": "D",
+      "name": "Film1",
+      "genre": "D23",
       "date": "D",
       "country": "D",
       "fields": [
@@ -58,6 +58,19 @@
       "genre": "fsfa",
       "date": "r4413",
       "country": "FGGG",
+      "fields": [
+        "Название",
+        "Жанр",
+        "Дата выхода",
+        "Страна"
+      ]
+    },
+    {
+      "id": 1581351415191,
+      "name": "asd",
+      "genre": "czxcxz",
+      "date": "55555555555",
+      "country": "GFE",
       "fields": [
         "Название",
         "Жанр",

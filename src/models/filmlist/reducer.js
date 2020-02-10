@@ -3,7 +3,8 @@ import {
   POST_FILM_SUCCESS,
   PUT_FILMS,
   REMOVE_FILM,
-  SET_INIT
+  SET_INIT,
+  UPDATE_FILM_FIELD_REDUCER
 } from './action';
 import deepCopy from '../../utils/deepCopy';
 import { removePropFromObject } from '../../utils/removePropFromObject';
@@ -27,7 +28,7 @@ const filmsReducer = (state = initialState, action) => {
         }
       }
     }
-  
+    
     case ADD_FILM: {
       const { id, payload } = action.payload;
       const { entities, ids } = deepCopy(state.filmsList);
@@ -40,8 +41,8 @@ const filmsReducer = (state = initialState, action) => {
         }
       };
     }
-  
-  
+    
+    
     case REMOVE_FILM: {
       const { entities, ids } = deepCopy(state.filmsList);
       return {
@@ -51,6 +52,17 @@ const filmsReducer = (state = initialState, action) => {
           entities: removePropFromObject(entities, action.payload),
           ids: removeArrayElement(ids, action.payload)
         }
+      };
+    }
+    
+    
+    case UPDATE_FILM_FIELD_REDUCER: {
+      const { id, obj } = action.payload;
+      const { entities, ids } = deepCopy(state.filmsList);
+      entities[id] = obj;
+      return {
+        ...state,
+        filmsList: { entities, ids }
       };
     }
     

@@ -6,3 +6,5 @@ export const PUT_FILMS = 'PUT_FILMS';
 export const SET_INIT = 'SET_INIT';
 export const DELETE_FILM = 'DELETE_FILM';
 export const REMOVE_FILM = 'REMOVE_FILM';
+export const UPDATE_FILM_FIELD = 'UPDATE_FILM_FIELD';
+export const UPDATE_FILM_FIELD_REDUCER = 'UPDATE_FILM_FIELD_REDUCER';

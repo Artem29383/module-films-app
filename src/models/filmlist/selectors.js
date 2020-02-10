@@ -21,6 +21,11 @@ export const getInitSelector = createSelector([getInit], init => init);
 
 export const getFilmsSelector = createSelector([getFilms], films => films);
 
+export const getFieldsSelector = createSelector([getFilms, getIds], (films) => {
+  return memoize(id => {
+    return Object.keys(films[id] || []).filter(value => (value !== 'id' && value !== 'fields'));
+  });
+});
 
 export const getFilteredItems = createSelector([getFilms, getIds], (films, ids) => {
   return memoize(search => {

@@ -20,7 +20,9 @@ class Api {
     return this.instance.delete(`filmsList/${id}`);
   };
   
-  
+  updateFilm = (id, film) => {
+    return this.instance.put(`filmsList/${id}`, film);
+  };
 }
 
 const API = new Api();
