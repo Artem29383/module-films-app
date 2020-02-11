@@ -1,2 +1,2 @@
-export const HOME_PAGE = ['/', '/films/:id'];
+export const HOME_PAGE = '/';
 export const FILM_PAGE = '/films/:id';

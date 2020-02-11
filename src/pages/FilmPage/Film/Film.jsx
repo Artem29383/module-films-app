@@ -16,8 +16,6 @@ const FilmContainer = styled.div`
   height: auto;
   box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.75);
   border-radius: 20px;
-  margin-right: 50px;
-  margin-top: 100px;
   padding-bottom: 30px;
 `;
 
