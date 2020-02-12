@@ -43,16 +43,14 @@ const Film = () => {
   return (
     <Fragment>
       {Object.keys(films).includes(id)
-        ? <div>
-          <FilmContainer>
-            {fields}
-              <Button>
-                <Nav to = '/'>
-                  Закрыть окно
-                </Nav>
-              </Button>
-          </FilmContainer>
-        </div>
+        ? <FilmContainer>
+          {fields}
+          <Button>
+            <Nav to='/'>
+              Закрыть окно
+            </Nav>
+          </Button>
+        </FilmContainer>
         : <Redirect to='/' />}
     </Fragment>
   )
