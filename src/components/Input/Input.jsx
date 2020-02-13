@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Bar,
-  Error,
-  Group,
-  InputField,
-  Label
-} from './styles';
+import S from './styles';
 
 const Input = ({
   value,
@@ -16,8 +10,8 @@ const Input = ({
   isError,
   focus = false
 }) => (
-  <Group>
-    <InputField
+  <S.Group>
+    <S.InputField
       value={value}
       onChange={handler}
       onBlur = {blur}
@@ -26,13 +20,13 @@ const Input = ({
       type="text"
       autoFocus = {focus}
     />
-    <Bar />
-    <Label>{desc}</Label>
+    <S.Bar />
+    <S.Label>{desc}</S.Label>
     {(isError && !value)
-    && <Error>
+    && <S.Error>
       Заполните поле.
-    </Error>}
-  </Group>
+    </S.Error>}
+  </S.Group>
 );
 
 export default Input;

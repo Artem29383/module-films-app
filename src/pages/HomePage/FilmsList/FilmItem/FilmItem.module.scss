@@ -1,0 +1,73 @@
+.item {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.filmsItem {
+  height: 100%;
+  position: absolute;
+  font-size: 25px;
+  color: #444;
+  width: 100%;
+  text-decoration: none;
+  border: 2px solid #444;
+
+  &:last-child {
+    border-bottom: 2px solid #444;
+  }
+
+  &:hover + .removeBtn {
+    opacity: 1;
+  }
+}
+
+
+
+.title {
+  width: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleText {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-left: 10px;
+}
+
+.removeBtn {
+  position: absolute;
+  height: 100%;
+  right: 20px;
+  color: #ea5a5a;
+  width: 30px;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity .2s linear;
+
+  &::before, &::after {
+    position: absolute;
+    height: 5px;
+    transform-origin: center;
+    width: 100%;
+    top: 45%;
+    content: '';
+    display: block;
+    transition: transform .2s linear;
+    background-color: #ea5a5a;
+  }
+  &::before {
+    transform: rotate(135deg);
+  }
+  &::after {
+    transform: rotate(45deg);
+  }
+  &:hover {
+    opacity: 1;
+  }
+}

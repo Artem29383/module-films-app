@@ -2,7 +2,7 @@ import {
   ADD_FILM,
   POST_FILM_SUCCESS,
   PUT_FILMS,
-  REMOVE_FILM,
+  DELETE_FILM_SUCCESS,
   SET_INIT,
   UPDATE_FILM_FIELD_REDUCER
 } from './action';
@@ -43,7 +43,7 @@ const filmsReducer = (state = initialState, action) => {
     }
     
     
-    case REMOVE_FILM: {
+    case DELETE_FILM_SUCCESS: {
       const { entities, ids } = deepCopy(state.filmsList);
       return {
         ...state,

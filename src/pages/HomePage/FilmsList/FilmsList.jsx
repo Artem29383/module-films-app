@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import {
-  NavLink,
-  useHistory
-} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import queryString from 'query-string';
 import Input from '../../../components/Input/Input';
 import classes from './FilmsList.module.scss';
 import useSelector from '../../../hooks/useSelector';
@@ -12,23 +10,27 @@ import {
 } from '../../../models/filmlist/selectors';
 import useAction from '../../../hooks/useAction';
 import { DELETE_FILM } from '../../../models/filmlist/action';
+import { isEmpty } from '../../../utils/isEmpty';
+import FilmItem from './FilmItem/FilmItem';
 
 const FilmsList = () => {
   const history = useHistory();
   const [search, setSearch] = useState('');
   const films = useSelector(getFilmsSelector);
   const filteredFilms = useSelector(getFilteredItems)(search);
-  const isSearch = /\?search=([(a-zA-Z)|(а-яА-Я)|\w]+)/.test(history.location.search);
+  const searchStr = queryString.parse(history.location.search).search || '';
+  const isSearch = isEmpty(searchStr);
   const removeFilm = useAction(DELETE_FILM);
   
   
   const searchHandler = useCallback(e => {
-    if (e.currentTarget.value.trim()) {
-      setSearch(e.currentTarget.value);
-      history.push(`/?search=${e.currentTarget.value.toLowerCase()}`);
+    const {value} = e.currentTarget;
+    if (value.trim()) {
+      setSearch(value);
+      history.push(`/?search=${value.toLowerCase()}`);
     } else {
       setSearch('');
-      history.push(`/`);
+      history.push('/');
     }
   }, [setSearch, history]);
   
@@ -39,8 +41,7 @@ const FilmsList = () => {
   
   useEffect(() => {
     if (isSearch) {
-      const match = history.location.search.match(/=(.+)$/m)[1].replace(/%20/g, ' ');
-      setSearch(match);
+      setSearch(searchStr);
     }
   }, []);
   
@@ -50,26 +51,13 @@ const FilmsList = () => {
     }
   }, [isSearch, search]);
   
-  const filmsList = filteredFilms.map(id => {
-    return (
-      <li key={id} className={classes.item}>
-        <NavLink
-          to={`/films/${id}`}
-          activeClassName={classes.active}
-          className={classes.filmsItem}
-        >
-          <div className={classes.title}>
-            <span className={classes.titleText}>
-              {films[id].name}
-            </span>
-          </div>
-        </NavLink>
-        <NavLink to='/' className={classes.removeBtn} onClick={() => removeFilmHandler(id)}>
-          ✖
-        </NavLink>
-      </li>
-    )
-  });
+  const filmsList = filteredFilms.map(id =>
+    <FilmItem
+      key = {id}
+      id = {id}
+      films = {films}
+      removeFilmHandler={removeFilmHandler}
+    />);
   
   
   return (

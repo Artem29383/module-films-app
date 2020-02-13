@@ -15,7 +15,7 @@ import {
   POST_FILM,
   POST_FILM_SUCCESS,
   PUT_FILMS,
-  REMOVE_FILM,
+  DELETE_FILM_SUCCESS,
   SET_INIT, UPDATE_FILM_FIELD, UPDATE_FILM_FIELD_REDUCER
 } from './action';
 
@@ -63,7 +63,7 @@ function* deleteFilm(action) {
   try {
     yield call(API.deleteFilm, action.payload);
     yield put({
-      type: REMOVE_FILM,
+      type: DELETE_FILM_SUCCESS,
       payload: action.payload
     });
   } catch (e) {

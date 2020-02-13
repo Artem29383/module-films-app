@@ -13,7 +13,7 @@ import { FILM_PAGE, HOME_PAGE } from './routes';
 import { GET_FILMS } from './models/filmlist/action';
 import { getInitSelector } from './models/filmlist/selectors';
 import HomePage from './pages/HomePage';
-import Film from './pages/FilmPage/Film';
+import FilmPage from './pages/FilmPage';
 
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
       <div className={classes.content}>
         <Switch>
           <Route path={HOME_PAGE} exact render={() => <HomePage />} />
-          <Route path={FILM_PAGE} render={() => <Film />} />
+          <Route path={FILM_PAGE} render={() => <FilmPage />} />
           <Redirect to='/' />
         </Switch>
       </div>
