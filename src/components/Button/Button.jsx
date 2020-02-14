@@ -1,5 +1,5 @@
-import React from 'react';
-import { Btn } from './styles';
+import React, { memo } from 'react';
+import { Btn } from './Button.styled';
 
 
 const Button = ({ children, clickHandler }) => (
@@ -8,4 +8,4 @@ const Button = ({ children, clickHandler }) => (
   </Btn>
 );
 
-export default Button;
+export default memo(Button);

@@ -1,5 +1,5 @@
-import React from 'react';
-import S from './styles';
+import React, { memo } from 'react';
+import S from './Input.styled';
 
 const Input = ({
   value,
@@ -29,4 +29,4 @@ const Input = ({
   </S.Group>
 );
 
-export default Input;
+export default memo(Input);

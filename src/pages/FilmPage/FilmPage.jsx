@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React  from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import { getFieldsSelector, getFilmsSelector } from '../../models/filmlist/selectors';
 import useSelector from '../../hooks/useSelector';
 import FieldFilm from './FieldFilm';
-import S from './styles';
+import S from './FilmPage.styled';
 
 
 const FilmPage = () => {

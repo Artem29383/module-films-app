@@ -89,7 +89,7 @@ const AddFilm = () => {
   
   
   return (
-    <Collapse isOpened={isShow || !isShow} theme={theme}>
+    <Collapse isOpened={true} theme={theme}>
       <div className={classes.title}>
         <div className={classes.titleText}>
           Добавить фильм

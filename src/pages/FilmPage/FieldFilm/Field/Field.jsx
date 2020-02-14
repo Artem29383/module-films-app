@@ -2,8 +2,8 @@ import React from 'react';
 
 
 import Input from '../../../../components/Input/Input';
-import FieldS from './styles';
-import S from '../../../../components/Input/styles';
+import FieldS from './Field.styled';
+import S from '../../../../components/Input/Input.styled';
 
 
 
