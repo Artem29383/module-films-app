@@ -18,26 +18,24 @@ const Field = ({
 }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [value, setValue] = useState('');
-  const [original, setOriginal] = useState('');
   const updateFieldFilm = useAction(UPDATE_FILM_FIELD);
   const [target, setTarget] = useState('');
   
   const editStartHandler = e => {
     setValue(valueDefault);
-    setOriginal(valueDefault);
     setTarget(e.currentTarget.getAttribute('data-name'));
     setIsEdit(true);
   };
   
   
   const editStopBlurHandler = () => {
-    if (value.trim() && value !== original) {
+    if (value.trim() && value !== valueDefault) {
       updateFieldFilm({
         id,
         payload: { ...films[id], [target]: value }
       });
     } else {
-      setValue(original);
+      setValue(valueDefault);
     }
     setIsEdit(false);
   };
@@ -48,19 +46,19 @@ const Field = ({
   
   const editStopKeyHandler = e => {
     if (e.key === 'Enter') {
-      if (value !== original && value.trim()) {
+      if (value !== valueDefault && value.trim()) {
         updateFieldFilm({
           id,
           payload: { ...films[id], [target]: value }
         });
       } else {
-        setValue(original);
+        setValue(valueDefault);
       }
       setIsEdit(false);
     }
     if (e.key === 'Escape') {
       setIsEdit(false);
-      setValue(original);
+      setValue(valueDefault);
     }
   };
   
