@@ -1,44 +1,91 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 
 import Input from '../../../../components/Input/Input';
-import FieldS from './Field.styled';
-import S from '../../../../components/Input/Input.styled';
+import S from './Field.styled';
+import useAction from '../../../../hooks/useAction';
+import { UPDATE_FILM_FIELD } from '../../../../models/filmlist/action';
 
 
 
 
 const Field = ({
-  value,
-  handler,
-  handlerKeyDown,
-  handlerBlur,
   name,
   field,
-  fnDBClick,
-  target,
   valueDefault,
-}) => (
-  <S.Group>
-    <FieldS.WrapField>
-      {(target !== name)
-        ? <FieldS.StyledValue
-          onDoubleClick={fnDBClick}
-          data-name={name}
-        >
-          {field}: {valueDefault}
-        </FieldS.StyledValue>
-        : <Input
-          value={value}
-          handler={handler}
-          type="text"
-          blur={handlerBlur}
-          keyDown={handlerKeyDown}
-          focus={true}
-        />}
-    </FieldS.WrapField>
-    <S.Bar />
-  </S.Group>
-);
+  films,
+  id
+}) => {
+  const [isEdit, setIsEdit] = useState(false);
+  const [value, setValue] = useState('');
+  const [original, setOriginal] = useState('');
+  const updateFieldFilm = useAction(UPDATE_FILM_FIELD);
+  const [target, setTarget] = useState('');
+  
+  const editStartHandler = e => {
+    setValue(valueDefault);
+    setOriginal(valueDefault);
+    setTarget(e.currentTarget.getAttribute('data-name'));
+    setIsEdit(true);
+  };
+  
+  
+  const editStopBlurHandler = () => {
+    if (value.trim() && value !== original) {
+      updateFieldFilm({
+        id,
+        payload: { ...films[id], [target]: value }
+      });
+    } else {
+      setValue(original);
+    }
+    setIsEdit(false);
+  };
+  
+  const editHandler = useCallback(e => {
+    setValue(e.currentTarget.value);
+  }, [setValue]);
+  
+  const editStopKeyHandler = e => {
+    if (e.key === 'Enter') {
+      if (value !== original && value.trim()) {
+        updateFieldFilm({
+          id,
+          payload: { ...films[id], [target]: value }
+        });
+      } else {
+        setValue(original);
+      }
+      setIsEdit(false);
+    }
+    if (e.key === 'Escape') {
+      setIsEdit(false);
+      setValue(original);
+    }
+  };
+  
+  return (
+    <S.Group>
+      <S.WrapField>
+        {(!isEdit)
+          ? <S.StyledValue
+            onDoubleClick={editStartHandler}
+            data-name={name}
+          >
+            {field}: {valueDefault}
+          </S.StyledValue>
+          : <Input
+            value={value}
+            handler={editHandler}
+            type="text"
+            blur={editStopBlurHandler}
+            keyDown={editStopKeyHandler}
+            focus={true}
+          />}
+      </S.WrapField>
+      <S.Bar />
+    </S.Group>
+  )
+};
 
 export default Field;

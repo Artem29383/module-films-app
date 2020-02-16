@@ -10,7 +10,7 @@ export default {
   padding-bottom: 30px;
 `,
   Nav: styled(NavLink)`
-  text-decoration:none;
+  text-decoration: none;
   display: block;
   color: #fff;
 `

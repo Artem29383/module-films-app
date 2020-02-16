@@ -16,7 +16,8 @@ import {
   POST_FILM_SUCCESS,
   PUT_FILMS,
   DELETE_FILM_SUCCESS,
-  SET_INIT, UPDATE_FILM_FIELD, UPDATE_FILM_FIELD_REDUCER
+  SET_INIT, UPDATE_FILM_FIELD,
+  UPDATE_FILM_FIELD_SUCCESS
 } from './action';
 
 
@@ -76,7 +77,7 @@ function* updateFilmField(action) {
   try {
     yield call(API.updateFilm, action.payload.id, action.payload.payload);
     yield put({
-      type: UPDATE_FILM_FIELD_REDUCER,
+      type: UPDATE_FILM_FIELD_SUCCESS,
       payload: {
         id: action.payload.id,
         obj: action.payload.payload

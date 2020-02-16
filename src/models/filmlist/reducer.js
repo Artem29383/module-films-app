@@ -4,7 +4,7 @@ import {
   PUT_FILMS,
   DELETE_FILM_SUCCESS,
   SET_INIT,
-  UPDATE_FILM_FIELD_REDUCER
+  UPDATE_FILM_FIELD_SUCCESS
 } from './action';
 import deepCopy from '../../utils/deepCopy';
 import { removePropFromObject } from '../../utils/removePropFromObject';
@@ -56,7 +56,7 @@ const filmsReducer = (state = initialState, action) => {
     }
     
     
-    case UPDATE_FILM_FIELD_REDUCER: {
+    case UPDATE_FILM_FIELD_SUCCESS: {
       const { id, obj } = action.payload;
       const { entities, ids } = deepCopy(state.filmsList);
       entities[id] = obj;
