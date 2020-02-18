@@ -12,6 +12,10 @@ class Api {
     return this.instance.get('filmsList');
   };
   
+  getFilm = id => {
+    return this.instance.get(`filmsList/${id}`);
+  };
+  
   postCreateFilms = (film) => {
     return this.instance.post(`filmsList`, film);
   };

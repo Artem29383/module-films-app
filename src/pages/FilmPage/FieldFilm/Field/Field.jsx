@@ -1,25 +1,24 @@
 import React, { useCallback, useState } from 'react';
 
-
 import Input from '../../../../components/Input/Input';
 import S from './Field.styled';
 import useAction from '../../../../hooks/useAction';
-import { UPDATE_FILM_FIELD } from '../../../../models/filmlist/action';
-
-
+import useSelector from '../../../../hooks/useSelector';
+import { getFilmsSelector } from '../../../../models/filmlist/selectors';
+import { UPDATE_FILM_FIELD } from '../../../../models/currentFilm/action';
 
 
 const Field = ({
   name,
   field,
   valueDefault,
-  films,
   id
 }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [value, setValue] = useState('');
   const updateFieldFilm = useAction(UPDATE_FILM_FIELD);
   const [target, setTarget] = useState('');
+  const films = useSelector(getFilmsSelector);
   
   const editStartHandler = e => {
     setValue(valueDefault);

@@ -7,15 +7,15 @@ const FieldFilm = ({
   field,
   valueDefault,
   name,
-  films
-}) => (
-  <Field
-    field={field}
-    name={name}
-    valueDefault={valueDefault}
-    films={films}
-    id={id}
-  />
-);
+}) => {
+  return (
+    <Field
+      field={field}
+      name={name}
+      valueDefault={valueDefault}
+      id={id}
+    />
+  )
+};
 
 export default memo(FieldFilm);

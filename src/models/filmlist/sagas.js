@@ -16,8 +16,6 @@ import {
   POST_FILM_SUCCESS,
   PUT_FILMS,
   DELETE_FILM_SUCCESS,
-  SET_INIT, UPDATE_FILM_FIELD,
-  UPDATE_FILM_FIELD_SUCCESS
 } from './action';
 
 
@@ -25,7 +23,8 @@ function* postFilm(action) {
   try {
     yield call(API.postCreateFilms, action.payload.payload);
     yield put({
-      type: ADD_FILM, payload: {
+      type: ADD_FILM,
+      payload: {
         id: action.payload.payload.id,
         payload: action.payload.payload
       }
@@ -53,7 +52,6 @@ function* getFilms() {
         ids: dataNormalized.result
       }
     });
-    yield put({ type: SET_INIT });
   } catch (e) {
     console.log(e);
   }
@@ -73,24 +71,10 @@ function* deleteFilm(action) {
 }
 
 
-function* updateFilmField(action) {
-  try {
-    yield call(API.updateFilm, action.payload.id, action.payload.payload);
-    yield put({
-      type: UPDATE_FILM_FIELD_SUCCESS,
-      payload: {
-        id: action.payload.id,
-        obj: action.payload.payload
-      }
-    })
-  } catch (e) {
-    console.log(e);
-  }
-}
 
-export default function* rootSaga() {
+
+export default function* rootSagaFilmsList() {
   yield takeEvery(POST_FILM, postFilm);
   yield takeEvery(GET_FILMS, getFilms);
   yield takeEvery(DELETE_FILM, deleteFilm);
-  yield takeEvery(UPDATE_FILM_FIELD, updateFilmField);
 }

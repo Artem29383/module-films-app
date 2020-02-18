@@ -3,16 +3,17 @@ import {
   POST_FILM_SUCCESS,
   PUT_FILMS,
   DELETE_FILM_SUCCESS,
-  SET_INIT,
-  UPDATE_FILM_FIELD_SUCCESS
+  UPDATE_FILMS_SUCCESS
 } from './action';
 import deepCopy from '../../utils/deepCopy';
 import { removePropFromObject } from '../../utils/removePropFromObject';
 import { removeArrayElement } from '../../utils/removeArrayElement';
 
 const initialState = {
-  filmsList: [],
-  init: false,
+  filmsList: {
+    entities: [],
+    ids: []
+  },
   isPost: false
 };
 
@@ -23,7 +24,8 @@ const filmsReducer = (state = initialState, action) => {
     case PUT_FILMS: {
       const { entities, ids } = action.payload;
       return {
-        ...state, filmsList: {
+        ...state,
+        filmsList: {
           entities, ids
         }
       }
@@ -56,7 +58,7 @@ const filmsReducer = (state = initialState, action) => {
     }
     
     
-    case UPDATE_FILM_FIELD_SUCCESS: {
+    case UPDATE_FILMS_SUCCESS: {
       const { id, obj } = action.payload;
       const { entities, ids } = deepCopy(state.filmsList);
       entities[id] = obj;
@@ -71,10 +73,6 @@ const filmsReducer = (state = initialState, action) => {
       return { ...state, isPost: action.payload };
     }
     
-    
-    case SET_INIT: {
-      return { ...state, init: true }
-    }
     
     default: {
       return state;

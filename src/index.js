@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import store from './state/Store';
-import { BrowserRouter } from 'react-router-dom';
+import store, { history } from './state/Store';
+import { ConnectedRouter } from 'connected-react-router'
 
 ReactDOM.render(<Provider store={store}>
-  <BrowserRouter>
+  <ConnectedRouter history={history}>
     <App />
-  </BrowserRouter>
+  </ConnectedRouter>
 </Provider>, document.getElementById('root'));

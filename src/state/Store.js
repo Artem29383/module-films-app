@@ -6,19 +6,25 @@ import {
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import filmsReducer from '../models/filmlist/reducer';
-import rootSaga from '../models/filmlist/sagas';
+import filmReducer from '../models/currentFilm/reducer';
+import { rootSaga } from './rootSaga';
+import { connectRouter, routerMiddleware  } from 'connected-react-router'
+import { createBrowserHistory } from 'history'
 
-
+export const history = createBrowserHistory();
 const saga = createSagaMiddleware();
 
-const reducer = combineReducers(
+const reducer = history => combineReducers(
   {
-    films: filmsReducer
+    films: filmsReducer,
+    film: filmReducer,
+    router: connectRouter(history),
   }
 );
 
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(saga)));
+const store = createStore(reducer(history),
+  composeWithDevTools(applyMiddleware(saga, routerMiddleware(history))));
 saga.run(rootSaga);
 
 export default store;
