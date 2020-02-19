@@ -22,7 +22,6 @@ const reducer = history => combineReducers(
   }
 );
 
-
 const store = createStore(reducer(history),
   composeWithDevTools(applyMiddleware(saga, routerMiddleware(history))));
 saga.run(rootSaga);

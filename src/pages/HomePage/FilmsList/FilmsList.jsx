@@ -22,7 +22,6 @@ const FilmsList = () => {
   const isSearch = isEmpty(searchStr);
   const removeFilm = useAction(DELETE_FILM);
   
-  
   const searchHandler = useCallback(e => {
     const {value} = e.currentTarget;
     if (value.trim()) {
@@ -33,7 +32,6 @@ const FilmsList = () => {
       history.push('/');
     }
   }, [setSearch, history]);
-  
   
   const removeFilmHandler = (id) => {
     removeFilm(id);
@@ -58,7 +56,6 @@ const FilmsList = () => {
       films = {films}
       removeFilmHandler={removeFilmHandler}
     />);
-  
   
   return (
     <div className={classes.filmsContainer}>

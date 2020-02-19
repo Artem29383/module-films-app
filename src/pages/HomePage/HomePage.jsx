@@ -6,7 +6,6 @@ import FilmsList from './FilmsList';
 
 const HomePage = () => {
   
-  
   return (
     <div className={classes.home}>
       <AddFilm />

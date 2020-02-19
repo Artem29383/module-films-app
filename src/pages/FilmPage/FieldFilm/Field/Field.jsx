@@ -26,12 +26,14 @@ const Field = ({
     setIsEdit(true);
   };
   
-  
   const editStopBlurHandler = () => {
     if (value.trim() && value !== valueDefault) {
       updateFieldFilm({
         id,
-        payload: { ...films[id], [target]: value }
+        payload: {
+          ...films[id],
+          [target]: value
+        }
       });
     } else {
       setValue(valueDefault);
@@ -48,7 +50,10 @@ const Field = ({
       if (value !== valueDefault && value.trim()) {
         updateFieldFilm({
           id,
-          payload: { ...films[id], [target]: value }
+          payload: {
+            ...films[id],
+            [target]: value
+          }
         });
       } else {
         setValue(valueDefault);

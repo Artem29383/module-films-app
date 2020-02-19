@@ -12,7 +12,10 @@ import {
 } from '../../models/currentFilm/selectors';
 import Loader from '../../components/Loader/Loader';
 import useAction from '../../hooks/useAction';
-import { GET_FILM, SET_LOADING_FILM } from '../../models/currentFilm/action';
+import {
+  GET_FILM,
+  SET_LOADING_FILM
+} from '../../models/currentFilm/action';
 
 
 const FilmPage = () => {
@@ -24,33 +27,28 @@ const FilmPage = () => {
   const film = useSelector(getFilmSelector);
   
   const getFilm = () => {
-      if (film.id !== Number(id)) {
-        setLoading(true);
-        getCurrentFilm(id);
-      }
+    if (film.id !== Number(id)) {
+      setLoading(true);
+      getCurrentFilm(id);
+    }
   };
   
   useEffect(() => {
     getFilm();
   }, []);
   
-  
-  if (isLoading) return <Loader />;
-  const fields = ids.map((item, i) => (
+  const fields = ids.map((field, i) => (
     <FieldFilm
-      key={i}
+      key={field}
       id={id}
-      name = {item}
+      name={field}
       field={film.fields[i]}
-      valueDefault={film[item]}
+      valueDefault={film[field]}
     />));
   
-  
-  
-  
-  
-  return (
-    <S.FilmContainer>
+  return isLoading
+    ? <Loader />
+    : <S.FilmContainer>
       {fields}
       <Button>
         <S.Nav to='/'>
@@ -58,7 +56,6 @@ const FilmPage = () => {
         </S.Nav>
       </Button>
     </S.FilmContainer>
-  )
 };
 
 export default FilmPage;

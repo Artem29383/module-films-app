@@ -18,7 +18,6 @@ import {
   DELETE_FILM_SUCCESS,
 } from './action';
 
-
 function* postFilm(action) {
   try {
     yield call(API.postCreateFilms, action.payload.payload);
@@ -38,7 +37,6 @@ function* postFilm(action) {
   }
 }
 
-
 function* getFilms() {
   try {
     const payload = yield call(API.getFilms);
@@ -57,7 +55,6 @@ function* getFilms() {
   }
 }
 
-
 function* deleteFilm(action) {
   try {
     yield call(API.deleteFilm, action.payload);
@@ -69,9 +66,6 @@ function* deleteFilm(action) {
     console.log(e);
   }
 }
-
-
-
 
 export default function* rootSagaFilmsList() {
   yield takeEvery(POST_FILM, postFilm);

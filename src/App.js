@@ -7,7 +7,10 @@ import {
 
 import classes from './App.module.scss';
 import useAction from './hooks/useAction';
-import { FILM_PAGE, HOME_PAGE } from './routes';
+import {
+  FILM_PAGE,
+  HOME_PAGE
+} from './routes';
 import { GET_FILMS } from './models/filmlist/action';
 import HomePage from './pages/HomePage';
 import FilmPage from './pages/FilmPage';
@@ -19,7 +22,6 @@ const App = () => {
   useEffect(() => {
     getFilms();
   }, [getFilms]);
-  
   
   return (
       <div className={classes.content}>

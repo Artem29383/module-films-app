@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import Field from './Field';
 
-
 const FieldFilm = ({
   id,
   field,

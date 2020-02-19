@@ -87,7 +87,6 @@ const AddFilm = () => {
       isShow && classes.show)}`
   };
   
-  
   return (
     <Collapse isOpened={true} theme={theme}>
       <div className={classes.title}>

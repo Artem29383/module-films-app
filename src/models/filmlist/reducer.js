@@ -20,13 +20,13 @@ const initialState = {
 const filmsReducer = (state = initialState, action) => {
   switch (action.type) {
     
-    
     case PUT_FILMS: {
       const { entities, ids } = action.payload;
       return {
         ...state,
         filmsList: {
-          entities, ids
+          entities,
+          ids
         }
       }
     }
@@ -39,11 +39,11 @@ const filmsReducer = (state = initialState, action) => {
       return {
         ...state,
         filmsList: {
-          entities, ids
+          entities,
+          ids
         }
       };
     }
-    
     
     case DELETE_FILM_SUCCESS: {
       const { entities, ids } = deepCopy(state.filmsList);
@@ -57,22 +57,25 @@ const filmsReducer = (state = initialState, action) => {
       };
     }
     
-    
     case UPDATE_FILMS_SUCCESS: {
       const { id, obj } = action.payload;
       const { entities, ids } = deepCopy(state.filmsList);
       entities[id] = obj;
       return {
         ...state,
-        filmsList: { entities, ids }
+        filmsList: {
+          entities,
+          ids
+        }
       };
     }
     
-    
     case POST_FILM_SUCCESS: {
-      return { ...state, isPost: action.payload };
+      return {
+        ...state,
+        isPost: action.payload
+      };
     }
-    
     
     default: {
       return state;

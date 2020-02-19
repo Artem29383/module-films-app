@@ -3,7 +3,7 @@ import { takeEvery, call, put } from '@redux-saga/core/effects';
 import {
   GET_FILM,
   GET_FILM_SUCCESS,
-  SET_LOADING_FILM, UPDATE_FILM_FIELD,
+  UPDATE_FILM_FIELD,
   UPDATE_FILM_FIELDS_SUCCESS
 } from './action';
 import { push } from 'connected-react-router'
@@ -20,13 +20,8 @@ function* getFilm(action) {
     });
   } catch (e) {
     yield put(push('/'));
-    yield put({
-      type: SET_LOADING_FILM,
-      payload: false
-    });
   }
 }
-
 
 function* updateFilmField(action) {
   try {
@@ -49,8 +44,6 @@ function* updateFilmField(action) {
     console.log(e);
   }
 }
-
-
 
 export default function* rootSagaFilm() {
   yield takeEvery(GET_FILM, getFilm);
