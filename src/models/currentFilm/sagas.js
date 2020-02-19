@@ -1,5 +1,9 @@
 import API from '../../api/api';
-import { takeEvery, call, put } from '@redux-saga/core/effects';
+import { 
+  takeEvery,
+  call,
+  put
+} from '@redux-saga/core/effects';
 import {
   GET_FILM,
   GET_FILM_SUCCESS,
