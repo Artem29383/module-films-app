@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 class Api {
   constructor() {
     this.instance = axios.create({

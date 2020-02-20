@@ -3,15 +3,11 @@ import classes from './HomePage.module.scss';
 import AddFilm from './AddFilm';
 import FilmsList from './FilmsList';
 
-
-const HomePage = () => {
-  
-  return (
-    <div className={classes.home}>
-      <AddFilm />
-      <FilmsList />
-    </div>
-  )
-};
+const HomePage = () => (
+  <div className={classes.home}>
+    <AddFilm />
+    <FilmsList />
+  </div>
+);
 
 export default HomePage;

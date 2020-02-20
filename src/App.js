@@ -15,7 +15,6 @@ import { GET_FILMS } from './models/filmlist/action';
 import HomePage from './pages/HomePage';
 import FilmPage from './pages/FilmPage';
 
-
 const App = () => {
   const getFilms = useAction(GET_FILMS);
   

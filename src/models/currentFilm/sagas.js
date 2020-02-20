@@ -1,5 +1,5 @@
 import API from '../../api/api';
-import { 
+import {
   takeEvery,
   call,
   put
@@ -12,7 +12,6 @@ import {
 } from './action';
 import { push } from 'connected-react-router'
 import { UPDATE_FILMS_SUCCESS } from '../filmlist/action';
-
 
 function* getFilm(action) {
   try {

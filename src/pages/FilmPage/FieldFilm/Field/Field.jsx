@@ -7,7 +7,6 @@ import useSelector from '../../../../hooks/useSelector';
 import { getFilmsSelector } from '../../../../models/filmlist/selectors';
 import { UPDATE_FILM_FIELD } from '../../../../models/currentFilm/action';
 
-
 const Field = ({
   name,
   field,

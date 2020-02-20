@@ -17,7 +17,6 @@ import {
   SET_LOADING_FILM
 } from '../../models/currentFilm/action';
 
-
 const FilmPage = () => {
   const isLoading = useSelector(getStatusLoading);
   const getCurrentFilm = useAction(GET_FILM);

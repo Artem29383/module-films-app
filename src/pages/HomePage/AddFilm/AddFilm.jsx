@@ -12,7 +12,6 @@ import {
   POST_FILM_SUCCESS
 } from '../../../models/filmlist/action';
 
-
 const AddFilm = () => {
   
   const [isShow, setIsShow] = useState(false);
